@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" packages="biz.paluch.logging.gelf.log4j2">
+    <Properties>
+        <Property name="springAppName">${bundle:application:spring.application.name}</Property>
+        <Property name="springActiveProfile">${env:SPRING_PROFILES_ACTIVE}</Property>
+        <Property name="sleuthInfo">${springAppName},%X{traceId},%X{spanId}</Property>
+    </Properties>
+    <ThresholdFilter level="trace"/>
+    <Appenders>
+        <Console name="STDOUT">
+            <PatternLayout
+                    pattern="%style{%d{ISO8601}}{bright,white} %highlight{%-5level}[${sleuthInfo}][%style{%t}{blue}] %style{%C{1.}}{red}: %msg%n%throwable"
+                    disableAnsi="false" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info" additivity="false" >            
+            <appender-ref ref="STDOUT" />
+        </Root>
+    </Loggers>
+</Configuration>
