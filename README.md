@@ -37,3 +37,6 @@ This README would normally document whatever steps are necessary to get your app
 ## Login - simple auth
 * user	=	demo
 * pass 	=	demo#2023	
+
+## run
+* https://localhost:9090/demo-spring/swagger-ui/index.html#/
